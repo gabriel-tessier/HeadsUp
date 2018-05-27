@@ -26,6 +26,8 @@
                     <li><a href="{{ url_for('PostsView:post') }}">{{ _('POST_CREATE') }}</a></li>
                     <li class="divider"></li>
                     <li><a href="{{ url_for('UsersView:get', id=current_user.id) }}">{{ _('APP_PROFILE') }}</a></li>
+					<li><a href="{{ url_for('UsersView:password') }}">{{ _('USER_PASSWORD') }}</a></li>
+					<li><a href="{{ url_for('UsersView:settings_email_notifications') }}">{{ _('USER_EMAIL_NOTIFICATION') }}</a></li>
                 </ul>
             </li>
             <li class="settings hidden-xs hidden-sm">

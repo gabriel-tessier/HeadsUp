@@ -73,18 +73,12 @@
 						<td><strong>{{ _('USER_NICKNAME') }}</strong></td>
 						<td>{{ user.nickname }}</td>
 					</tr>
-					<tr>
-						<td><strong>{{ _('USER_ADDRESS') }}</strong></td>
-						<td>{{ user.address }}</td>
-					</tr>
-					<tr>
-						<td><strong>{{ _('USER_PHONE') }}</strong></td>
-						<td>{{ user.phone }}</td>
-					</tr>
+					{% if current_user.is_admin -%}
 					<tr>
 						<td><strong>{{ _('USER_ROLE') }}</strong></td>
 						<td>{{ user.role_desc }}</td>
 					</tr>
+					{% endif %}
 					<tr>
 						<td><strong>{{ _('USER_CREATED_AT') }}</strong></td>
 						<td>{{ user.created_at|datetimeformat }}</td>

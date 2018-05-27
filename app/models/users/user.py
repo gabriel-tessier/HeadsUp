@@ -65,22 +65,6 @@ class User(Base, sa.Model, ModelHelper, UserMixin):
         return self.set_attribute('nickname', value)
 
     @property
-    def address(self):
-        return self.get_attribute('address', '')
-
-    @address.setter
-    def address(self, value):
-        return self.set_attribute('address', value)
-
-    @property
-    def phone(self):
-        return self.get_attribute('phone', '')
-
-    @phone.setter
-    def phone(self, value):
-        return self.set_attribute('phone', value)
-
-    @property
     def last_seen(self):
         return self.get_attribute('last_seen')
 
@@ -111,6 +95,22 @@ class User(Base, sa.Model, ModelHelper, UserMixin):
     @lang.setter
     def lang(self, value):
         return self.set_attribute('lang', value)
+
+    @property
+    def allow_digest(self):
+        return self.get_attribute('allow_digest', True)
+
+    @allow_digest.setter
+    def allow_digest(self, value):
+        return self.set_attribute('allow_digest', value)
+
+    @property
+    def allow_comment(self):
+        return self.get_attribute('allow_comment', True)
+
+    @allow_comment.setter
+    def allow_comment(self, value):
+        return self.set_attribute('allow_comment', value)
 
     @property
     def profile_picture_id(self):

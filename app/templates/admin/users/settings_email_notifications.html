@@ -1,0 +1,36 @@
+{% extends "admin/layout/base.html" %}
+{% set title = _('USER_PROFILE_EDIT_PAGE_TITLE', name=user.name) %}
+
+{% from "shared/_bootstrap_forms.html" import render_normal_field %}
+
+{% block main %}
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="form-container">
+			<h2 class="title">{{ _('USER_EMAIL_NOTIFICATION_TITLE')}}</h2>
+			<form action="{{ url_for('UsersView:settings_email_notifications') }}" method="post" name="UserEdit" class="form-horizontal" role="form">
+				<div class="well clearfix">
+					<button type="submit" class="btn btn-primary pull-right">{{ _('BTN_SAVE_LBL') }}</button>
+				</div>
+				<fieldset class="fieldset">
+					<h2>{{ _('USER_DIGEST_EDIT_TITLE') }}</h2>
+					<div class="checkbox">
+						<label class="text-muted">
+							{{ form.allow_digest }}
+							{{ _('USER_ALLOW_DIGEST_EMAIL') }}
+						</label>
+					</div>
+					<h2>{{ _('USER_COMMENTS_EDIT_TITLE') }}</h2>
+					<div class="checkbox">
+						<label class="text-muted">
+							{{ form.allow_comment }}
+							{{ _('USER_ALLOW_COMMENT_EMAIL') }}
+						</label>
+					</div>
+				</fieldset>
+				{{ form.hidden_tag() }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

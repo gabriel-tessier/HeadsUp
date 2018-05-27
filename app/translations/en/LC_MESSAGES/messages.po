@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-04-23 19:43+0900\n"
+"POT-Creation-Date: 2018-05-27 11:43+0900\n"
 "PO-Revision-Date: 2017-07-15 18:02+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -64,7 +64,8 @@ msgstr "Dashboard"
 #: app/views/admin/sessions/forms/forgot_password.py:9
 #: app/views/admin/sessions/forms/login.py:9
 #: app/views/admin/sessions/forms/signup.py:10
-#: app/views/admin/users/forms.py:12
+#: app/views/admin/users/forms/user_edit.py:12
+#: app/views/admin/users/forms/user_new.py:12
 msgid "USER_EMAIL"
 msgstr "Email"
 
@@ -73,39 +74,42 @@ msgid "USER_LAST_ACCESS"
 msgstr "Last login"
 
 #: app/templates/admin/index.html:20 app/templates/admin/layout/navbar.html:28
+#: app/templates/admin/layout/sidebar.html:47
 #: app/templates/main/common/_sidebar_user.html:29
 #: app/templates/main/layout/header.html:36
 msgid "APP_PROFILE"
 msgstr "Profile"
 
-#: app/templates/admin/index.html:24 app/templates/admin/layout/sidebar.html:15
-#: app/templates/admin/users/show.html:47
+#: app/templates/admin/index.html:24 app/templates/admin/layout/sidebar.html:42
 #: app/templates/main/common/_sidebar_user.html:35
-msgid "USER_EDIT"
+msgid "SETTINGS_EDIT"
 msgstr "Settings"
 
 #: app/templates/admin/index.html:32 app/templates/admin/index.html:33
-#: app/templates/admin/index.html:37 app/templates/admin/posts/drafts.html:10
-#: app/templates/admin/posts/drafts.html:19
-#: app/templates/admin/posts/index.html:10
-#: app/templates/admin/posts/index.html:19
+#: app/templates/admin/index.html:37
+#: app/templates/admin/layout/posts/drafts.html:10
+#: app/templates/admin/layout/posts/drafts.html:19
+#: app/templates/admin/layout/posts/index.html:10
+#: app/templates/admin/layout/posts/index.html:19
 #: app/templates/admin/users/user_posts.html:8
 #: app/templates/admin/users/user_posts.html:9
 #: app/templates/admin/users/user_posts.html:14
 msgid "POSTS_PAG_LBL"
 msgstr "stories"
 
-#: app/templates/admin/index.html:41 app/templates/admin/posts/drafts.html:23
-#: app/templates/admin/posts/index.html:23
+#: app/templates/admin/index.html:41
+#: app/templates/admin/layout/posts/drafts.html:23
+#: app/templates/admin/layout/posts/index.html:23
 msgid "WELCOME_MESSAGE_LBL"
 msgstr ""
-"You haven't shared any story yet.<br/>Participate in this comunity by writing your first story!"
+"You haven't shared any story yet.<br/>Participate in this comunity by "
+"writing your first story!"
 
 #: app/templates/admin/index.html:54 app/templates/admin/layout/navbar.html:24
+#: app/templates/admin/layout/posts/index.html:7
+#: app/templates/admin/layout/posts/partials/_sidebar.html:9
 #: app/templates/admin/layout/sidebar.html:22
-#: app/templates/admin/layout/sidebar.html:28
-#: app/templates/admin/posts/index.html:7
-#: app/templates/admin/posts/partials/_sidebar.html:9
+#: app/templates/admin/layout/sidebar.html:27
 #: app/templates/main/common/_sidebar_user.html:23
 msgid "POST_LIST"
 msgstr "Stories"
@@ -125,7 +129,7 @@ msgstr "Categories | %(page)s"
 
 #: app/templates/admin/categories/index.html:7
 #: app/templates/admin/categories/partials/_sidebar.html:5
-#: app/templates/admin/layout/sidebar.html:42
+#: app/templates/admin/layout/sidebar.html:64
 msgid "CATEGORY_LIST"
 msgstr "Categories"
 
@@ -151,8 +155,8 @@ msgid "CATEGORY_DESC"
 msgstr "Description"
 
 #: app/templates/admin/categories/index.html:20
-#: app/templates/admin/layout/sidebar.html:49
-#: app/templates/admin/layout/sidebar.html:56
+#: app/templates/admin/layout/sidebar.html:72
+#: app/templates/admin/layout/sidebar.html:77
 #: app/templates/admin/users/index.html:9
 #: app/templates/admin/users/partials/_sidebar.html:29
 msgid "USER_LIST"
@@ -198,16 +202,19 @@ msgstr "Describe the category..."
 
 #: app/templates/admin/categories/partials/_category_form_add.html:7
 #: app/templates/admin/categories/partials/_category_form_edit.html:7
-#: app/templates/admin/posts/partials/_post_edit.html:36
-#: app/templates/admin/posts/partials/_sidebar.html:45
-#: app/templates/admin/users/add.html:32 app/templates/admin/users/edit.html:32
+#: app/templates/admin/layout/posts/partials/_post_edit.html:36
+#: app/templates/admin/layout/posts/partials/_sidebar.html:45
+#: app/templates/admin/users/add.html:32 app/templates/admin/users/edit.html:28
+#: app/templates/admin/users/password.html:21
+#: app/templates/admin/users/settings_email_notifications.html:14
 msgid "BTN_SAVE_LBL"
 msgstr "Save"
 
 #: app/templates/admin/categories/partials/_category_form_add.html:8
 #: app/templates/admin/categories/partials/_category_form_edit.html:8
 #: app/templates/admin/categories/partials/_transfer_post.html:12
-#: app/templates/admin/users/add.html:31 app/templates/admin/users/edit.html:31
+#: app/templates/admin/users/add.html:31 app/templates/admin/users/edit.html:27
+#: app/templates/admin/users/password.html:20
 msgid "BTN_CLEAR_LBL"
 msgstr "Clear"
 
@@ -229,15 +236,15 @@ msgid "APP_YOUR_ACCOUNT"
 msgstr "Your account"
 
 #: app/templates/admin/layout/navbar.html:25
-#: app/templates/admin/layout/sidebar.html:32
-#: app/templates/admin/posts/partials/_sidebar.html:14
+#: app/templates/admin/layout/posts/partials/_sidebar.html:14
+#: app/templates/admin/layout/sidebar.html:30
 msgid "POST_DRAFT_LIST"
 msgstr "Drafts"
 
 #: app/templates/admin/layout/navbar.html:26
-#: app/templates/admin/layout/sidebar.html:36
-#: app/templates/admin/posts/edit.html:2
-#: app/templates/admin/posts/partials/_sidebar.html:4
+#: app/templates/admin/layout/posts/edit.html:2
+#: app/templates/admin/layout/posts/partials/_sidebar.html:4
+#: app/templates/admin/layout/sidebar.html:33
 #: app/templates/main/common/_sidebar_user.html:70
 #: app/templates/main/layout/error-base.html:32
 msgid "POST_CREATE"
@@ -248,93 +255,107 @@ msgid "APP_TOP"
 msgstr "Top"
 
 #: app/templates/admin/layout/navbar.html:37
-#: app/templates/admin/layout/sidebar.html:97
+#: app/templates/admin/layout/sidebar.html:89
 #: app/templates/main/layout/header.html:42
 #: app/templates/main/layout/header.html:87
 msgid "APP_SIGN_OUT"
 msgstr "Sign Out"
 
-#: app/templates/admin/layout/sidebar.html:3
+#: app/templates/admin/layout/sidebar.html:6
 msgid "APP_HOME_LBL"
 msgstr "Home"
 
-#: app/templates/admin/layout/sidebar.html:9
+#: app/templates/admin/layout/sidebar.html:13
 #: app/templates/main/layout/error-base.html:27
 #: app/templates/main/layout/header-no-menu.html:28
 #: app/templates/main/layout/header.html:26
 msgid "APP_MYPAGE"
 msgstr "My Page"
 
-#: app/templates/admin/layout/sidebar.html:60
+#: app/templates/admin/layout/sidebar.html:50
+#: app/templates/admin/sessions/signin.html:12
+#: app/templates/admin/sessions/signup.html:14
+#: app/views/admin/sessions/forms/login.py:10
+#: app/views/admin/sessions/forms/signup.py:13
+#: app/views/admin/users/forms/password.py:12
+#: app/views/admin/users/forms/user_new.py:28
+msgid "USER_PASSWORD"
+msgstr "Password"
+
+#: app/templates/admin/layout/sidebar.html:53
+msgid "USER_EMAIL_NOTIFICATION"
+msgstr "Email & Notifications"
+
+#: app/templates/admin/layout/sidebar.html:80
 #: app/templates/admin/users/add.html:2 app/templates/admin/users/add.html:11
 #: app/templates/admin/users/partials/_sidebar.html:55
 msgid "USER_CREATE"
 msgstr "New User"
 
-#: app/templates/admin/posts/drafts.html:2
+#: app/templates/admin/layout/posts/drafts.html:2
 msgid "POSTS_DRAFT_PAGE_TITLE"
 msgstr "Drafts | %(page)s"
 
-#: app/templates/admin/posts/drafts.html:7
+#: app/templates/admin/layout/posts/drafts.html:7
 msgid "POSTS_DRAFT_LIST"
 msgstr "Drafts"
 
-#: app/templates/admin/posts/edit.html:15
-#: app/templates/admin/posts/partials/_post_item.html:14
-#: app/templates/admin/posts/show.html:15
+#: app/templates/admin/layout/posts/edit.html:15
+#: app/templates/admin/layout/posts/partials/_post_item.html:14
+#: app/templates/admin/layout/posts/show.html:15
 msgid "POST_STATUS_DRAFT_LABEL"
 msgstr "Private: Only you can see this document"
 
-#: app/templates/admin/posts/index.html:2
+#: app/templates/admin/layout/posts/index.html:2
 msgid "POSTS_PAGE_TITLE"
 msgstr "Stories | %(page)s"
 
-#: app/templates/admin/posts/partials/_post_edit.html:13
+#: app/templates/admin/layout/posts/partials/_post_edit.html:13
 msgid "BTN_UPLOAD_COVER_PICTURE_LBL"
 msgstr "Click here to upload a new cover picture"
 
-#: app/templates/admin/posts/partials/_post_edit.html:22
+#: app/templates/admin/layout/posts/partials/_post_edit.html:22
 msgid "FRM_INPUT_TITLE_DESCRIPTION"
 msgstr "Title – Best description of your post (30 words)"
 
-#: app/templates/admin/posts/partials/_post_edit.html:23
+#: app/templates/admin/layout/posts/partials/_post_edit.html:23
 msgid "FRM_INPUT_CHALLENGE_DESCRIPTION"
 msgstr "Your Challenge – Description of what you had to cope with (150 words)"
 
-#: app/templates/admin/posts/partials/_post_edit.html:24
+#: app/templates/admin/layout/posts/partials/_post_edit.html:24
 msgid "FRM_INPUT_SOLUTION_DESCRIPTION"
 msgstr "Your Solution – Description of what you did (150 words)"
 
-#: app/templates/admin/posts/partials/_post_edit.html:30
+#: app/templates/admin/layout/posts/partials/_post_edit.html:30
 msgid "CB_ANONYMOUS_LBL"
 msgstr "Make this Post Anonymous"
 
-#: app/templates/admin/posts/partials/_post_edit.html:43
+#: app/templates/admin/layout/posts/partials/_post_edit.html:43
 msgid "ERROR_STAMP_TITLE_EMPTY"
 msgstr "Please enter a title."
 
-#: app/templates/admin/posts/partials/_post_edit.html:44
+#: app/templates/admin/layout/posts/partials/_post_edit.html:44
 msgid "ERROR_STAMP_CHALLENGE_EMPTY"
 msgstr "Please enter the challenge."
 
-#: app/templates/admin/posts/partials/_post_edit.html:45
+#: app/templates/admin/layout/posts/partials/_post_edit.html:45
 msgid "ERROR_STAMP_SOLUTION_EMPTY"
 msgstr "Please enter the solution."
 
-#: app/templates/admin/posts/partials/_post_item.html:51
-#: app/templates/admin/posts/partials/_sidebar.html:34
+#: app/templates/admin/layout/posts/partials/_post_item.html:51
+#: app/templates/admin/layout/posts/partials/_sidebar.html:34
 msgid "POST_DELETE_CONFIRMATION"
 msgstr "This will remove '%(title)s', Are you sure?"
 
-#: app/templates/admin/posts/partials/_sidebar.html:20
+#: app/templates/admin/layout/posts/partials/_sidebar.html:20
 msgid "POST_SHOW"
 msgstr "Show"
 
-#: app/templates/admin/posts/partials/_sidebar.html:27
+#: app/templates/admin/layout/posts/partials/_sidebar.html:27
 msgid "POST_EDIT"
 msgstr "Edit"
 
-#: app/templates/admin/posts/partials/_sidebar.html:36
+#: app/templates/admin/layout/posts/partials/_sidebar.html:36
 msgid "POST_DELETE"
 msgstr "Delete"
 
@@ -354,24 +375,24 @@ msgstr ""
 msgid "MAIL_LBL"
 msgstr "Email"
 
-#: app/templates/admin/sessions/forgot_password.html:15
+#: app/templates/admin/sessions/forgot_password.html:20
 msgid "SEND_RESET_INSTRUCTION_BTN"
 msgstr "Send Reset Email"
 
-#: app/templates/admin/sessions/forgot_password.html:21
-#: app/templates/admin/sessions/reset_password.html:22
+#: app/templates/admin/sessions/forgot_password.html:26
+#: app/templates/admin/sessions/reset_password.html:27
 #: app/templates/admin/sessions/signup.html:37
 msgid "SIGNIN_ACTION_LBL"
 msgstr "Already have an account?"
 
-#: app/templates/admin/sessions/forgot_password.html:22
-#: app/templates/admin/sessions/reset_password.html:23
+#: app/templates/admin/sessions/forgot_password.html:27
+#: app/templates/admin/sessions/reset_password.html:28
 #: app/templates/admin/sessions/signin.html:22
 #: app/templates/admin/sessions/signup.html:38
 #: app/templates/main/common/_sidebar_user.html:49
 #: app/templates/main/layout/header.html:49
 #: app/templates/main/layout/header.html:94
-#: app/templates/main/site/home.html:21 app/templates/main/stamp/show.html:112
+#: app/templates/main/site/home.html:21 app/templates/main/stamp/show.html:81
 msgid "LOGIN_BTN"
 msgstr "Login"
 
@@ -383,7 +404,7 @@ msgstr "Reset Password"
 msgid "RESET_PASSWORD_TEXT"
 msgstr "Please enter and confirm your new password below."
 
-#: app/templates/admin/sessions/reset_password.html:16
+#: app/templates/admin/sessions/reset_password.html:21
 msgid "RESET_PASSWORD_BTN"
 msgstr "Reset Password"
 
@@ -391,14 +412,6 @@ msgstr "Reset Password"
 #: app/templates/admin/sessions/signin.html:10
 msgid "LOGIN_TITLE"
 msgstr "Login"
-
-#: app/templates/admin/sessions/signin.html:12
-#: app/templates/admin/sessions/signup.html:14
-#: app/views/admin/sessions/forms/login.py:10
-#: app/views/admin/sessions/forms/signup.py:13
-#: app/views/admin/users/forms.py:28
-msgid "USER_PASSWORD"
-msgstr "Password"
 
 #: app/templates/admin/sessions/signin.html:16
 msgid "REMEMBER_ME_BTN"
@@ -413,7 +426,7 @@ msgstr "Don't have an account?"
 #: app/templates/main/common/_sidebar_user.html:52
 #: app/templates/main/layout/header.html:55
 #: app/templates/main/layout/header.html:91
-#: app/templates/main/site/home.html:22 app/templates/main/stamp/show.html:115
+#: app/templates/main/site/home.html:22 app/templates/main/stamp/show.html:84
 msgid "REGISTER_BTN"
 msgstr "Sign Up"
 
@@ -441,6 +454,8 @@ msgstr ""
 "=\"custom-link\" target=\"_blank\">Terms of Service</a></span>"
 
 #: app/templates/admin/users/edit.html:2
+#: app/templates/admin/users/password.html:2
+#: app/templates/admin/users/settings_email_notifications.html:2
 msgid "USER_PROFILE_EDIT_PAGE_TITLE"
 msgstr "Edit User's Profile | %(name)s"
 
@@ -461,7 +476,8 @@ msgstr "users"
 #: app/templates/admin/users/index.html:20
 #: app/templates/admin/users/show.html:69
 #: app/views/admin/sessions/forms/signup.py:11
-#: app/views/admin/users/forms.py:17
+#: app/views/admin/users/forms/user_edit.py:17
+#: app/views/admin/users/forms/user_new.py:17
 msgid "USER_NAME"
 msgstr "Name"
 
@@ -474,7 +490,9 @@ msgid "USER_POSTS_COUNT"
 msgstr "Stories"
 
 #: app/templates/admin/users/index.html:23
-#: app/templates/admin/users/show.html:85 app/views/admin/users/forms.py:25
+#: app/templates/admin/users/show.html:78
+#: app/views/admin/users/forms/user_edit.py:25
+#: app/views/admin/users/forms/user_new.py:25
 msgid "USER_ROLE"
 msgstr "Role"
 
@@ -484,6 +502,34 @@ msgstr "Role"
 msgid "USER_DELETE_CONFIRMATION"
 msgstr "This will remove '%(name)s', Are you sure?"
 
+#: app/templates/admin/users/password.html:11
+msgid "USER_PASSWORD_EDIT_TITLE"
+msgstr "Change Password"
+
+#: app/templates/admin/users/settings_email_notifications.html:10
+msgid "USER_EMAIL_NOTIFICATION_TITLE"
+msgstr "Email & Notifications"
+
+#: app/templates/admin/users/settings_email_notifications.html:13
+msgid "BTN_CANCEL_LBL"
+msgstr "Cancel"
+
+#: app/templates/admin/users/settings_email_notifications.html:17
+msgid "USER_DIGEST_EDIT_TITLE"
+msgstr "Content for You"
+
+#: app/templates/admin/users/settings_email_notifications.html:21
+msgid "USER_ALLOW_DIGEST_EMAIL"
+msgstr "HeadUP Digest emails consist of Top Stories and other popular content from your feed."
+
+#: app/templates/admin/users/settings_email_notifications.html:24
+msgid "USER_COMMENTS_EDIT_TITLE"
+msgstr "Comments"
+
+#: app/templates/admin/users/settings_email_notifications.html:28
+msgid "USER_ALLOW_COMMENT_EMAIL"
+msgstr "We'll email you when someone comments on your stories and comments."
+
 #: app/templates/admin/users/show.html:2
 msgid "USER_PROFILE_SHOW_PAGE_TITLE"
 msgstr "User's Profile | %(name)s"
@@ -491,6 +537,10 @@ msgstr "User's Profile | %(name)s"
 #: app/templates/admin/users/show.html:40
 msgid "USER_REMOVE"
 msgstr "Remove"
+
+#: app/templates/admin/users/show.html:47
+msgid "USER_EDIT"
+msgstr "Edit"
 
 #: app/templates/admin/users/show.html:57
 msgid "USER_INFO_TITLE"
@@ -506,35 +556,28 @@ msgstr "Last seen"
 
 #: app/templates/admin/users/show.html:73
 #: app/views/admin/sessions/forms/signup.py:12
-#: app/views/admin/users/forms.py:21
+#: app/views/admin/users/forms/user_edit.py:21
+#: app/views/admin/users/forms/user_new.py:21
 msgid "USER_NICKNAME"
 msgstr "Nickname"
 
-#: app/templates/admin/users/show.html:77 app/views/admin/users/forms.py:34
-msgid "USER_ADDRESS"
-msgstr "Address"
-
-#: app/templates/admin/users/show.html:81 app/views/admin/users/forms.py:35
-msgid "USER_PHONE"
-msgstr "Phone"
-
-#: app/templates/admin/users/show.html:89
+#: app/templates/admin/users/show.html:83
 msgid "USER_CREATED_AT"
 msgstr "Created at"
 
-#: app/templates/admin/users/show.html:105
+#: app/templates/admin/users/show.html:99
 msgid "USER_POST_RECENT_TITLE"
 msgstr "Recent posts"
 
-#: app/templates/admin/users/show.html:112
+#: app/templates/admin/users/show.html:106
 msgid "USER_POST_PUBLISHED_AT"
 msgstr "Posted at"
 
-#: app/templates/admin/users/show.html:113
+#: app/templates/admin/users/show.html:107
 msgid "USER_POST_UPDATED_AT"
 msgstr "Updated at"
 
-#: app/templates/admin/users/show.html:114
+#: app/templates/admin/users/show.html:108
 msgid "USER_POST_TITLE"
 msgstr "Stories"
 
@@ -763,59 +806,58 @@ msgstr "Stamps for %(category)s"
 msgid "RANKING_TITLE"
 msgstr "Most populars stamps"
 
+#: app/templates/main/stamp/show.html:70
+msgid "COMMENT_TEXT_PLACEHOLDER"
+msgstr "Add a comment..."
+
+#: app/templates/main/stamp/show.html:73
+msgid "COMMENT_SUBMIT_BTN"
+msgstr "Comment"
+
+#: app/templates/main/stamp/show.html:121
+msgid "COMMENT_DELETE_CONFIRMATION"
+msgstr ""
+"This will remove [%(text)s] permanently,\n"
+"Do you wish to continue?"
+
+#: app/templates/main/stamp/show.html:127
+msgid "COMMENT_REPLY_LBL"
+msgstr "Reply"
+
+#: app/templates/main/stamp/show.html:158
+msgid "COMMENT_REPLY_TEXT_PLACEHOLDER"
+msgstr "Add a reply..."
+
+#: app/templates/main/stamp/show.html:161
+msgid "COMMENT_REPLY_CANCEL_BTN"
+msgstr "Cancel"
+
+#: app/templates/main/stamp/show.html:164
+msgid "COMMENT_REPLY_SUBMIT_BTN"
+msgstr "Reply"
+
 #: app/templates/main/stamp/partials/_stamp_ranking_feed.html:20
-#: app/templates/main/stamp/partials/_stamp_single.html:17
-#: app/templates/main/stamp/partials/_stamp_single.html:44
-#: app/templates/main/stamp/show.html:40
+#: app/templates/main/stamp/partials/_user_info.html:10
 msgid "ANONYMOUS_LBL"
 msgstr "Anonymous"
 
 #: app/templates/main/stamp/partials/_stamp_ranking_feed.html:23
-#: app/templates/main/stamp/partials/_stamp_single.html:20
-#: app/templates/main/stamp/partials/_stamp_single.html:47
-#: app/templates/main/stamp/show.html:42
+#: app/templates/main/stamp/partials/_user_info.html:12
 msgid "POSTED_BY_USER_LBL"
 msgstr "Posted by %(user)s in %(category)s"
 
-#: app/templates/main/stamp/show.html:101
-msgid "COMMENT_TEXT_PLACEHOLDER"
-msgstr "Add a comment..."
-
-#: app/templates/main/stamp/show.html:104
-msgid "COMMENT_SUBMIT_BTN"
-msgstr "Comment"
-
-#: app/templates/main/stamp/show.html:151
-msgid "COMMENT_DELETE_CONFIRMATION"
-msgstr "This will remove [%(text)s] permanently,\nDo you wish to continue?"
-
-#: app/templates/main/stamp/show.html:156
-msgid "COMMENT_REPLY_LBL"
-msgstr "Reply"
-
-#: app/templates/main/stamp/show.html:186
-msgid "COMMENT_REPLY_TEXT_PLACEHOLDER"
-msgstr "Add a reply..."
-
-#: app/templates/main/stamp/show.html:189
-msgid "COMMENT_REPLY_CANCEL_BTN"
-msgstr "Cancel"
-
-#: app/templates/main/stamp/show.html:192
-msgid "COMMENT_REPLY_SUBMIT_BTN"
-msgstr "Reply"
-
 #: app/templates/main/stamp/partials/_stamp_ranking_feed.html:37
-#: app/templates/main/stamp/partials/_stamp_single.html:68
+#: app/templates/main/stamp/partials/_stamp_single.html:29
 msgid "READ_MORE_LBL"
 msgstr "Read more..."
 
 #: app/views/admin/categories/index.py:38
 #: app/views/admin/categories/index.py:76
 #: app/views/admin/categories/index.py:129 app/views/admin/posts/index.py:65
-#: app/views/admin/posts/index.py:120 app/views/admin/sessions/index.py:87
-#: app/views/admin/sessions/index.py:136 app/views/admin/sessions/index.py:182
+#: app/views/admin/posts/index.py:120 app/views/admin/sessions/index.py:77
+#: app/views/admin/sessions/index.py:136 app/views/admin/sessions/index.py:185
 #: app/views/admin/users/index.py:55 app/views/admin/users/index.py:88
+#: app/views/admin/users/index.py:124 app/views/admin/users/index.py:160
 #: app/views/main/stamp/comment/index.py:25
 msgid "ERROR_INVALID_SUBMISSION"
 msgstr "Invalid submission, please check the message below"
@@ -882,8 +924,8 @@ msgstr "The story \"%(title)s\" was removed"
 msgid "ERROR_POST_DELETE_FAILED"
 msgstr "Error while removing the story, %(error)s"
 
-#: app/views/admin/sessions/index.py:19 app/views/admin/sessions/index.py:75
-#: app/views/admin/sessions/index.py:129 app/views/admin/sessions/index.py:167
+#: app/views/admin/sessions/index.py:19 app/views/admin/sessions/index.py:65
+#: app/views/admin/sessions/index.py:129 app/views/admin/sessions/index.py:170
 msgid "SESSIONS_MSG_ALREADY_SIGNED_IN"
 msgstr "You are already signed in."
 
@@ -895,31 +937,32 @@ msgstr "Invalid email or password."
 msgid "SESSIONS_MSG_LOGIN_SUCESS"
 msgstr "Signed in successfully"
 
-#: app/views/admin/sessions/index.py:67
-msgid "SESSIONS_MSG_SIGNED_OUT"
-msgstr "Signed out successfully."
-
-#: app/views/admin/sessions/index.py:90
+#: app/views/admin/sessions/index.py:80 app/views/admin/sessions/index.py:139
+#: app/views/admin/sessions/index.py:188
 msgid "SESSIONS_ERROR_UNFINISHED_CHALLENGE_LBL"
 msgstr "Invalid captcha"
 
-#: app/views/admin/sessions/index.py:116
+#: app/views/admin/sessions/index.py:106
 msgid "SESSIONS_MSG_SIGNUP_COMPLETED"
 msgstr "Welcome! You have signed up successfully."
 
-#: app/views/admin/sessions/index.py:143
+#: app/views/admin/sessions/index.py:121
+msgid "SESSIONS_MSG_SIGNED_OUT"
+msgstr "Signed out successfully."
+
+#: app/views/admin/sessions/index.py:146
 msgid "SESSIONS_ERROR_MAIL_NOT_FOUND"
 msgstr "There isn't an account on record for the email address %(email)s."
 
-#: app/views/admin/sessions/index.py:147
+#: app/views/admin/sessions/index.py:150
 msgid "SESSIONS_PASSWORD_RESET"
 msgstr "Instructions on how to reset your password were sent to %(email)s."
 
-#: app/views/admin/sessions/index.py:175
+#: app/views/admin/sessions/index.py:178
 msgid "ERROR_INVALID_RESET_PASSWORD_CODE"
 msgstr "The email link you clicked is invalid. Please try again."
 
-#: app/views/admin/sessions/index.py:192
+#: app/views/admin/sessions/index.py:198
 msgid "SESSIONS_MSG_PASSWORD_RESET_COMPLETED"
 msgstr "Your password has been successfully changed."
 
@@ -928,7 +971,8 @@ msgid "USER_RESET_PASSWORD"
 msgstr "New Password"
 
 #: app/views/admin/sessions/forms/reset_password.py:11
-#: app/views/admin/users/forms.py:30
+#: app/views/admin/users/forms/password.py:14
+#: app/views/admin/users/forms/user_new.py:30
 msgid "USER_CONFIRM_PASSWORD_INVALID"
 msgstr "Password don't match"
 
@@ -952,16 +996,9 @@ msgstr "This email is already in use. Please choose another one."
 msgid "USER_NICKNAME_TAKEN_ERROR"
 msgstr "This nickname is already in use. Please choose another one."
 
-#: app/views/admin/users/forms.py:33
-msgid "USER_CONFIRM"
-msgstr "Confirm"
-
-#: app/views/admin/users/forms.py:36
-msgid "USER_TIMEZONE"
-msgstr "Timezone"
-
 #: app/views/admin/users/index.py:39 app/views/admin/users/index.py:78
-#: app/views/admin/users/index.py:117 app/views/admin/users/index.py:158
+#: app/views/admin/users/index.py:114 app/views/admin/users/index.py:150
+#: app/views/admin/users/index.py:186 app/views/admin/users/index.py:227
 msgid "USER_NOT_FOUND"
 msgstr "User not found"
 
@@ -969,42 +1006,60 @@ msgstr "User not found"
 msgid "USER_CREATE_SUCCESS"
 msgstr "User was succesfully created"
 
-#: app/views/admin/users/index.py:100
+#: app/views/admin/users/index.py:97 app/views/admin/users/index.py:133
+#: app/views/admin/users/index.py:169
 msgid "USER_SAVE_SUCCESS"
 msgstr "User was succesfully updated"
 
-#: app/views/admin/users/index.py:129
+#: app/views/admin/users/index.py:198
 msgid "USER_DELETE_SUCCESS"
 msgstr "The user \"%(name)s\" was removed"
 
-#: app/views/admin/users/index.py:132
+#: app/views/admin/users/index.py:201
 msgid "USER_DELETE_FAIL"
 msgstr "Error while removing the user, %(error)s"
 
-#: app/views/admin/users/index.py:201
+#: app/views/admin/users/index.py:270
 msgid "USER_POST_HIDE_SUCCESS"
 msgstr "The story is now hidden from public view"
 
-#: app/views/admin/users/index.py:203
+#: app/views/admin/users/index.py:272
 msgid "USER_POST_RESTORE_SUCCESS"
 msgstr "The story was made public"
 
-#: app/views/admin/users/index.py:206
+#: app/views/admin/users/index.py:275
 msgid "USER_POST_HIDE_OR_RESTORE_FAIL"
 msgstr "Error while processing the stamp, %(error)s"
 
-#: app/views/main/stamp/comment/forms.py:9
-msgid "COMMENT_DESC"
-msgstr ""
+#: app/views/admin/users/forms/password.py:17
+#: app/views/admin/users/forms/user_new.py:33
+msgid "USER_CONFIRM"
+msgstr "Confirm"
+
+#: app/views/admin/users/forms/user_edit.py:28
+#: app/views/admin/users/forms/user_new.py:36
+msgid "USER_TIMEZONE"
+msgstr "Timezone"
+
+#: app/views/admin/users/forms/user_new.py:34
+msgid "USER_ADDRESS"
+msgstr "Address"
+
+#: app/views/admin/users/forms/user_new.py:35
+msgid "USER_PHONE"
+msgstr "Phone"
 
 #: app/views/main/stamp/comment/index.py:31
 msgid "COMMENT_SAVE_SUCESS"
 msgstr "Thank you! your comment was added to the story."
 
-#: app/views/main/stamp/comment/index.py:59
+#: app/views/main/stamp/comment/index.py:61
 msgid "COMMENT_DELETE_SUCCESS"
 msgstr "The comment has been removed."
 
-#: app/views/main/stamp/comment/index.py:61
+#: app/views/main/stamp/comment/index.py:63
 msgid "ERROR_COMMENT_DELETE_FAILED"
 msgstr "Error while removing the comment, %(error)s"
+
+#~ msgid "COMMENT_DESC"
+#~ msgstr ""

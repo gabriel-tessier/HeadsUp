@@ -1,101 +1,93 @@
-	{% set navigation_bar = [
-		{
-			'name': _('APP_HOME_LBL'),
-			'url': 'latest',
-			'icon': 'glyphicon glyphicon-home',
-			'pattern': 'latest'
-		},
-		{
-			'name': _('APP_MYPAGE'),
-			'url': 'dashboard',
-			'icon': 'glyphicon glyphicon-leaf',
-			'pattern': 'dashboard'
-		},
-		{
-			'name': _('USER_EDIT'),
-			'url': '',
-			'url_solved': url_for('UsersView:put', id=current_user.id),
-			'icon': 'glyphicon glyphicon-cog',
-			'pattern': 'UsersView:put'
-		},
-		{
-			'name': _('POST_LIST'),
-			'url': '',
-			'icon': 'glyphicon glyphicon-edit',
-			'pattern': 'PostsView:index PostsView:draft_list PostsView:post PostsView:put',
-			'sub_menu': {
-				'index': {
-					'name': _('POST_LIST'),
-					'url': 'PostsView:index'
-				},
-				'draft': {
-					'name': _('POST_DRAFT_LIST'),
-					'url': 'PostsView:draft_list'
-				},
-				'new': {
-					'name': _('POST_CREATE'),
-					'url': 'PostsView:post'
-				}
-			}
-		},
-		{
-			'name': _('CATEGORY_LIST'),
-			'require_admin': True,
-			'url': 'CategoriesView:index',
-			'icon': 'glyphicon glyphicon-bookmark',
-			'pattern': 'CategoriesView:index CategoriesView:post CategoriesView:put CategoriesView:transfer_post'
-		},
-		{
-			'name': _('USER_LIST'),
-			'require_admin': True,
-			'url': '',
-			'icon': 'glyphicon glyphicon-user',
-			'pattern': 'UsersView:index UsersView:post UsersView:get',
-			'sub_menu': {
-				'index': {
-					'name': _('USER_LIST'),
-					'url': 'UsersView:index'
-				},
-				'new': {
-					'name': _('USER_CREATE'),
-					'url': 'UsersView:post'
-				}
-			}
-		}
-	] -%}
-	<div id="sidebar-nav">
-		<ul id="dashboard-menu">
-			{% for item in navigation_bar -%}
-			{% set is_active = request.endpoint in item.pattern %}
-			{% if not item.require_admin or (current_user.is_admin and item.require_admin) -%}
+<div id="sidebar-nav">
+	<ul id="dashboard-menu">
+		<li>
+			<a href="{{ url_for('latest') }}">
+				<i class="glyphicon glyphicon-home"></i>
+				<span>{{ _('APP_HOME_LBL') }}</span>
+			</a>
+		</li>
+
+		<li class="element {% if request.endpoint == 'dashboard' %}active{% endif %}">
+			<a href="{{ url_for('dashboard') }}" data-method="post" >
+				<i class="glyphicon glyphicon-leaf"></i>
+				<span>{{ _('APP_MYPAGE') }}</span>
+			</a>
+		</li>
+
+		{% if current_user.is_authenticated %}
+			{% set is_active = request.endpoint in 'PostsView:index PostsView:draft_list PostsView:post PostsView:put' %}
 			<li class="element {% if is_active  %}active{% endif %}">
-				{% if 'sub_menu' in item  %}
 				<a href="javascript:void(0);" class="dropdown-toggle {% if is_active  %}current{% endif %}">
-					<i class="{{ item['icon'] }}"></i>
-					<span>{{ item['name'] }}</span>
+					<i class="glyphicon glyphicon-edit"></i>
+					<span>{{ _('POST_LIST') }}</span>
 					<i class="glyphicon glyphicon-chevron-down"></i>
 				</a>
 				<ul class="submenu {% if is_active  %}active{% endif %}">
-					{% for key, submnenu in item.sub_menu.iteritems() %}
-					<li class="{% if request.endpoint == submnenu.url %}active{% endif %}">
-						<a href="{{ url_for(submnenu.url) }}">{{ submnenu.name }}</a>
+					<li {% if request.endpoint == 'PostsView:index' %}class="active"{% endif %}>
+						<a href="{{ url_for('PostsView:index') }}">{{ _('POST_LIST') }}</a>
 					</li>
-					{% endfor %}
+					<li {% if request.endpoint == 'PostsView:draft_list' %}class="active"{% endif %}>
+						<a href="{{ url_for('PostsView:draft_list') }}">{{ _('POST_DRAFT_LIST') }}</a>
+					</li>
+					<li {% if request.endpoint == 'PostsView:post' %}class="active"{% endif %}>
+						<a href="{{ url_for('PostsView:post') }}">{{ _('POST_CREATE') }}</a>
+					</li>
 				</ul>
-				{% else %}
-				<a href="{{ item.url_solved if item.get('url_solved') else url_for(item.url) }}" >
-					<i class="{{ item['icon'] }}"></i>
-					<span>{{ item['name'] }}</span>
-				</a>
-				{% endif %}
 			</li>
-			{%- endif %}
-			{%- endfor %}
-			<li>
-				<a href="{{ url_for('sessions.logout') }}" data-method="post" >
-					<i class="glyphicon glyphicon-log-out"></i>
-					<span>{{ _('APP_SIGN_OUT') }}</span>
+
+			{% set is_active = request.endpoint in 'UsersView:get UsersView:put UsersView:settings_email UsersView:settings_email_notifications' %}
+			<li class="element {% if is_active  %}active{% endif %}">
+				<a href="javascript:void(0);" class="dropdown-toggle {% if is_active  %}current{% endif %}">
+					<i class="glyphicon glyphicon-cog"></i>
+					<span>{{ _('SETTINGS_EDIT') }}</span>
+					<i class="glyphicon glyphicon-chevron-down"></i>
+				</a>
+				<ul class="submenu {% if is_active  %}active{% endif %}">
+					<li {% if request.endpoint in 'UsersView:get UsersView:put' %}class="active"{% endif %}>
+						<a href="{{ url_for('UsersView:get', id=current_user.id) }}">{{ _('APP_PROFILE') }}</a>
+					</li>
+					<li {% if request.endpoint in 'UsersView:password' %}class="active"{% endif %}>
+						<a href="{{ url_for('UsersView:password') }}">{{ _('USER_PASSWORD') }}</a>
+					</li>
+					<li {% if request.endpoint in 'UsersView:settings_email_notifications' %}class="active"{% endif %}>
+						<a href="{{ url_for('UsersView:settings_email_notifications') }}">{{ _('USER_EMAIL_NOTIFICATION') }}</a>
+					</li>
+				</ul>
+			</li>
+		{% endif %}
+
+		{% if current_user.is_admin %}
+			{% set is_active = request.endpoint in 'CategoriesView:index CategoriesView:post CategoriesView:put CategoriesView:transfer_post' %}
+			<li class="element{% if is_active  %} active{% endif %}">
+				<a href="{{ url_for('CategoriesView:index') }}">
+					<i class="glyphicon glyphicon-bookmark"></i>
+					<span>{{ _('CATEGORY_LIST') }}</span>
 				</a>
 			</li>
-		</ul>
-	</div>
+
+			{% set is_active = request.endpoint in 'UsersView:index UsersView:post' %}
+			<li class="element{% if is_active  %} active{% endif %}">
+				<a href="javascript:void(0);" class="dropdown-toggle {% if is_active  %}current{% endif %}">
+					<i class="glyphicon glyphicon-user"></i>
+					<span>{{ _('USER_LIST') }}</span>
+					<i class="glyphicon glyphicon-chevron-down"></i>
+				</a>
+				<ul class="submenu {% if is_active  %}active{% endif %}">
+					<li {% if request.endpoint == 'UsersView:index' %}class="active"{% endif %}>
+						<a href="{{ url_for('UsersView:index') }}">{{ _('USER_LIST') }}</a>
+					</li>
+					<li {% if request.endpoint == 'UsersView:index' %}class="active"{% endif %}>
+						<a href="{{ url_for('UsersView:post') }}">{{ _('USER_CREATE') }}</a>
+					</li>
+				</ul>
+			</li>
+		{% endif %}
+
+		<li>
+			<a href="{{ url_for('sessions.logout') }}" data-method="post" >
+				<i class="glyphicon glyphicon-log-out"></i>
+				<span>{{ _('APP_SIGN_OUT') }}</span>
+			</a>
+		</li>
+	</ul>
+</div>

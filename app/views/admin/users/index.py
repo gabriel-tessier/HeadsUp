@@ -7,7 +7,7 @@ from flask_babel import gettext as _, refresh
 from flask_paginate import Pagination
 from app.models import Post, User, Picture, Feed
 from app.helpers import render_view, send_email
-from forms import UserForm
+from forms import UserEditForm, UserNewForm, PasswordForm, UserEmailNotificationForm
 
 
 class UsersView(FlaskView):
@@ -47,7 +47,7 @@ class UsersView(FlaskView):
     @route('/new', methods=['GET', 'POST'])
     def post(self):
 
-        form = UserForm()
+        form = UserNewForm()
 
         if form.is_submitted():
             try:
@@ -72,7 +72,7 @@ class UsersView(FlaskView):
         user = User.get_by_id(id)
 
         if user is None:
-            return render_view(url_for('UsersView:index'),
+            return render_view(url_for('dashboard'),
                                status=False,
                                redirect=True,
                                message=_('USER_NOT_FOUND'))
@@ -80,16 +80,13 @@ class UsersView(FlaskView):
         if not user.can_edit():
             abort(401)
 
-        form = UserForm(user=user)
+        form = UserEditForm(user=user)
 
         if form.is_submitted():
             try:
                 if not form.validate():
                     raise Exception(_('ERROR_INVALID_SUBMISSION'))
 
-                if form.password.data:
-                    user.set_password(form.password.data)
-                del form.password
                 form.populate_obj(user)
                 user.save()
 
@@ -105,13 +102,83 @@ class UsersView(FlaskView):
                            form=form,
                            user=user)
 
+    @route('/edit/password', methods=['GET', 'POST'])
+    def password(self):
+
+        user = current_user
+
+        if user is None:
+            return render_view(url_for('dashboard'),
+                               status=False,
+                               redirect=True,
+                               message=_('USER_NOT_FOUND'))
+
+        if not user.can_edit():
+            abort(401)
+
+        form = PasswordForm()
+
+        if form.is_submitted():
+            try:
+                if not form.validate():
+                    raise Exception(_('ERROR_INVALID_SUBMISSION'))
+
+                user.set_password(form.password.data)
+                user.save()
+
+                refresh()
+
+                return render_view(url_for('UsersView:get', id=user.id),
+                                   redirect=True,
+                                   message=_('USER_SAVE_SUCCESS'))
+            except Exception as e:
+                flash(e.message, 'error')
+
+        return render_view('admin/users/password.html',
+                           form=form,
+                           user=user)
+
+    @route('/edit/settings-email-notifications', methods=['GET', 'POST'])
+    def settings_email_notifications(self):
+
+        user = current_user
+
+        if user is None:
+            return render_view(url_for('dashboard'),
+                               status=False,
+                               redirect=True,
+                               message=_('USER_NOT_FOUND'))
+
+        if not user.can_edit():
+            abort(401)
+
+        form = UserEmailNotificationForm(user=user)
+
+        if form.is_submitted():
+            try:
+                if not form.validate():
+                    raise Exception(_('ERROR_INVALID_SUBMISSION'))
+
+                form.populate_obj(user)
+                user.save()
+
+                return render_view(url_for('UsersView:settings_email_notifications'),
+                                   redirect=True,
+                                   message=_('USER_SAVE_SUCCESS'))
+            except Exception as e:
+                flash(e.message, 'error')
+
+        return render_view('admin/users/settings_email_notifications.html',
+                           form=form,
+                           user=user)
+
     @route('/remove/<int:id>', methods=['POST', 'DELETE'])
     def delete(self, id):
 
         user = User.get_by_id(id)
 
         if user is None:
-            return render_view(url_for('UsersView:index'),
+            return render_view(url_for('dashboard'),
                                status=False,
                                redirect=True,
                                message=_('USER_NOT_FOUND'))
@@ -153,7 +220,7 @@ class UsersView(FlaskView):
         user = User.get_by_id(id)
 
         if user is None:
-            return render_view(url_for('UsersView:index'),
+            return render_view(url_for('dashboard'),
                                status=False,
                                message=_('USER_NOT_FOUND'))
 

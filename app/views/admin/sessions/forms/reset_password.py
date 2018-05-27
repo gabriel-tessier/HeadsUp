@@ -9,7 +9,7 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField(_lg('USER_RESET_PASSWORD'), [
         validators.Required(),
         validators.EqualTo('confirm_password', message=_lg('USER_CONFIRM_PASSWORD_INVALID')),
-        validators.Length(min=10, max=64)
+        validators.Length(min=6, max=64)
     ])
     confirm_password = PasswordField(_lg('USER_RESET_PASSWORD_CONFIRM'), [validators.Required()])
     code = HiddenField()

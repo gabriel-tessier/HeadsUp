@@ -1,0 +1,42 @@
+#pad-wrapper {
+	.form-container {
+		.title {
+			font-size: 2.0em;
+			font-weight: 700;
+			margin: 0 0 15px 0;
+		}
+
+		.well {
+			margin: 0 0 15px 0;
+		}
+
+		.fieldset {
+			h2 {
+				font-size: 1.4em;
+				font-weight: 700;
+				margin: 0 0 5px 0;
+			}
+
+			.checkbox {
+				margin: 0;
+				padding: 0;
+
+				label {
+					line-height: 1;
+
+					input {
+						margin-top: 0;
+					}
+				}
+			}
+
+			.checkbox + .checkbox {
+				margin-top: 5px;
+			}
+
+			.checkbox + h2 {
+				margin-top: 15px;
+			}
+		}
+	}
+}

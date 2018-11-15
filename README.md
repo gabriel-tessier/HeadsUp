@@ -19,7 +19,8 @@ Install the following software on your PC
 ### Installation 
 
 1. Clone the repository `$ git clone <path to repository>` and `$ cd` into it
-2. Run `$ pip install -r requeriments.txt`
+2. Install virtualenv **
+2 bis. Run `$ pip install -r requeriments.txt`
 3. run `$ npm install`
 4. run `$ bower install`
 5. run `$ grunt --help` to see list of available tasks
@@ -35,3 +36,9 @@ Tasks are configured per package basis on **grunt-tasks** and are defined at the
 - `grunt dist` : Generate the assets files for Production mode. Is a combination of the tasks **frontend-dist** and **backend-dist**.
 - `grunt frontend-dist` : Build the assets for the frontend side of the project for Production
 - `grunt backend-dist` : Build the assets for the backend side of the project for Production
+
+
+(**) virtualenv Installation (on linux)
+virtualenv  --python=/usr/bin/python2.7 venv # fix the path to your python if need
+. venv/bin/activate # you should have a (venv) in your prompt
+deactivate # to leave your venv

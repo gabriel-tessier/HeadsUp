@@ -11,7 +11,7 @@ Web Application built with python and Flask Framework to host a super awesome Bl
 Install the following software on your PC
 
 - Python 2.7.X
-- MySQL & MySQL Python Lib
+- ~~MySQL & MySQL Python Lib~~ ElasticSearch and elasticsearch-py
 - Node.js and NPM (It's required by Bower, Grunt)
 - Ruby (Required by Compass)
 - Git (duh!)
